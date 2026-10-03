@@ -13,7 +13,8 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
 ## For everyone
 
 - **[Installing apps](Installing-Apps)**: get an app's zip onto the Thor,
-  install it, update it, remove it.
+  install it, update it, remove it, and
+  [open it with a game](Installing-Apps#opening-an-app-with-a-game).
 - **Apps to try:** [Dice](Example-Dice), [WhatsApp](Web-Apps), and
   [Dino](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/dino)
   if you removed the one that comes with Barry Launcher. Both are on the

@@ -66,6 +66,25 @@ are deleted.
 it and it stays gone, even after updates. To get it back, install `dino.zip`
 from the [releases](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 
+## Opening an app with a game
+
+Any app (yours, or Firefox, Discord, Signal, Dino) can open by itself when
+a game starts: a map or wiki for that game, Discord for the friends you
+play it with, Dice for a board game.
+
+1. **Quick Access → Barry Launcher → Games** tab.
+2. **Game:** the games running now (marked ▶) come first, then the ones
+   you played most recently. Steam games and non-Steam games both work.
+3. **Opens:** the app.
+4. **Close it when the game closes:** on, the app closes when you quit the
+   game. Off, it stays open.
+5. **Link.**
+
+The links are listed under the button; **✕** removes one. One app per
+game: linking a game again replaces its app. If the app is already open
+when the game starts, it just comes forward, and it stays open when the
+game closes.
+
 ## Hiding and ordering
 
 Your apps sort like Barry Launcher's own: in the **Apps** tab, the switch
