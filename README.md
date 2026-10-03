@@ -5,7 +5,7 @@ bottom screen in [PB-OS](https://github.com/project-barry/pb-os) (and in the
 [portable Barry Launcher](https://github.com/project-barry/barry-launcher)).
 
 A Barry Launcher app is a folder with a QML file and a small
-`barry-app.json`. Zip the folder, install the zip from Barry Launcher's
+`barry-app.json`, or just the `barry-app.json` of a website (a web app). Zip the folder, install the zip from Barry Launcher's
 Decky plugin, and the app gets its own tile on the home screen.
 
 ![Barry Launcher on an AYN Thor's bottom screen, with the Dice app installed](wiki/images/thor-home.png)
@@ -15,6 +15,7 @@ Decky plugin, and the app gets its own tile on the home screen.
 | Folder | |
 | --- | --- |
 | [`apps/dice`](apps/dice) | **Dice**, the example app: up to six dice, d4 to d20, with a tumble-and-bounce roll. Shows sizing, touch, animation and saving settings. |
+| [`apps/whatsapp`](apps/whatsapp) | **WhatsApp**, a web app: WhatsApp Web in a Firefox window of its own, logged in between runs. No code, just `barry-app.json`; the example for [web apps](https://github.com/project-barry/barry-launcher-apps/wiki/Web-Apps). Not made by WhatsApp or Meta. |
 | [`apps/dino`](apps/dino) | **Dino**, the endless runner that comes with Barry Launcher, here to install again if you removed it. A whole game in one QML file. |
 | [`template`](template) | A bare starting point: copy it, rename it, build on it. |
 | [`tools`](tools) | `barry-app check`, `pack` and `run`: check an app, zip it, and try it on your computer. |
@@ -22,7 +23,7 @@ Decky plugin, and the app gets its own tile on the home screen.
 
 ## Try the example
 
-Download `dice.zip` (or `dino.zip`) from the
+Download `dice.zip`, `whatsapp.zip` or `dino.zip` from the
 [latest release](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 On the Thor, go to Quick Access (•••) → **Barry Launcher** → **Apps** →
 **Install app…** and pick the zip.
@@ -40,6 +41,7 @@ The wiki explains it all, with pictures:
 - [Your first app](https://github.com/project-barry/barry-launcher-apps/wiki/Your-First-App)
 - [Installing apps](https://github.com/project-barry/barry-launcher-apps/wiki/Installing-Apps)
 - [App package reference](https://github.com/project-barry/barry-launcher-apps/wiki/App-Package-Reference)
+- [Web apps](https://github.com/project-barry/barry-launcher-apps/wiki/Web-Apps)
 - [The `barry` object](https://github.com/project-barry/barry-launcher-apps/wiki/The-barry-Object)
 - [Design guidelines](https://github.com/project-barry/barry-launcher-apps/wiki/Design-Guidelines)
 - [Tools](https://github.com/project-barry/barry-launcher-apps/wiki/Tools)

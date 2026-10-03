@@ -14,7 +14,8 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
 
 - **[Installing apps](Installing-Apps)**: get an app's zip onto the Thor,
   install it, update it, remove it.
-- **Apps to try:** [Dice](Example-Dice), and [Dino](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/dino)
+- **Apps to try:** [Dice](Example-Dice), [WhatsApp](Web-Apps), and
+  [Dino](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/dino)
   if you removed the one that comes with Barry Launcher. Both are on the
   [releases page](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 
@@ -23,6 +24,8 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
 1. **[Your first app](Your-First-App)**: from the template to an app on
    your home screen, step by step.
 2. **[The Dice example](Example-Dice)**: a complete small app, explained.
+   **[Web apps](Web-Apps)**: a website as an app, with WhatsApp as the
+   example, and no code at all.
 3. **[App package reference](App-Package-Reference)**: `barry-app.json`,
    the archive, and the limits.
 4. **[The `barry` object](The-barry-Object)**: what Barry Launcher gives your
@@ -37,8 +40,9 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
 
 ## What an app is
 
-- **QML only**, run by Qt 6's QML engine (the same one Barry Launcher
-  itself uses). Nothing to compile.
+- **QML**, run by Qt 6's QML engine (the same one Barry Launcher itself
+  uses), with nothing to compile; or a **website**, opened in a Firefox
+  window of its own ([Web apps](Web-Apps)).
 - **Full screen** on the bottom screen (1240 × 1080 on the Thor), driven by
   touch.
 - **Its own tile** on the home screen, with your icon. It can be reordered

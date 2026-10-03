@@ -1,0 +1,14 @@
+{
+  "format": 1,
+  "id": "io.github.project-barry.whatsapp",
+  "name": "WhatsApp",
+  "version": "1.0.0",
+  "type": "web",
+  "url": "https://web.whatsapp.com/",
+  "zoom": 1.25,
+  "allow": ["microphone"],
+  "icon": "icon.svg",
+  "description": "WhatsApp Web on the bottom screen, in a Firefox window of its own. Not made by WhatsApp or Meta.",
+  "author": "Project Barry",
+  "homepage": "https://github.com/project-barry/barry-launcher-apps"
+}

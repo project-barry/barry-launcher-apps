@@ -35,7 +35,11 @@ by relative paths (`"images/logo.png"`, `import "parts"`).
 | `id` | **required** | Unique, forever. Reverse domain, lower case: letters, digits, `-` and `_`, at least one `.` between parts, up to 64 characters. `io.github.yourname.appname` is yours if you're `yourname` on GitHub. An install with the same id **updates** that app. |
 | `name` | **required** | The tile's label, up to **20** characters. Long names shrink to fit the tile. |
 | `version` | **required** | Any text; [semantic versions](https://semver.org) (`1.2.0`) are clearest. Shown in the install message. |
-| `main` | **required** | The QML file to run, inside the folder. Its root item fills the screen ([the `barry` object](The-barry-Object)). |
+| `type` | optional | `"qml"` (the default) or `"web"`: a website instead of QML ([Web apps](Web-Apps)). |
+| `main` | **required** for QML | The QML file to run, inside the folder. Its root item fills the screen ([the `barry` object](The-barry-Object)). |
+| `url` | **required** for web | The site to open, `https://` only. |
+| `zoom` | optional, web | How big the site is drawn, 0.5 to 4 (default 1.25). |
+| `allow` | optional, web | `["microphone"]`, `["camera"]` or both: what the site may use without asking. |
 | `icon` | optional | A `.svg` or `.png` inside the folder, square. Without one, the tile shows a plain app icon (*My First App* below). |
 | `description`, `author`, `homepage` | optional | Text about the app. Barry Launcher keeps them for a future app list or store. |
 
@@ -71,6 +75,7 @@ why.
 | Links | none: no symbolic links, hard links or device files |
 | Paths | all inside the app folder: no `..`, no absolute paths |
 | `main`, `icon` | must exist in the folder |
+| `url` | `https://` only |
 | `id` | not one of Barry Launcher's own apps |
 
 Files are installed as plain files: the archive's owners and permissions
@@ -86,7 +91,8 @@ are dropped.
 
 ## How it runs
 
-Barry Launcher runs every app the same way:
+A web app runs in Firefox, kiosk mode, with a profile of its own in its
+data folder ([Web apps](Web-Apps)). A QML app runs like this:
 
 ```
 qml6 /usr/share/barry_launcher/shell/AppHost.qml -- APPDIR MAIN ID NAME DATADIR
