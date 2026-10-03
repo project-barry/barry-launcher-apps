@@ -28,6 +28,7 @@ file:///home/steamos/.local/share/barry_launcher/apps/io.github.you.broken/main.
 
 Everything your app prints (errors, warnings, `console.log`) goes to
 `~/.cache/barry_launcher/ID.log`, started afresh each time the app starts.
+A [service](Services)'s output goes there too.
 
 - **Desktop Mode:** open it in Kate, or in Konsole:
   `tail -f ~/.cache/barry_launcher/io.github.you.myapp.log`

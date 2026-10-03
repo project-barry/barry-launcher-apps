@@ -21,6 +21,10 @@ Decky plugin, and the app gets its own tile on the home screen.
 | [`tools`](tools) | `barry-app check`, `pack` and `run`: check an app, zip it, and try it on your computer. |
 | [`wiki`](wiki) | The source of [the wiki](https://github.com/project-barry/barry-launcher-apps/wiki). |
 
+Elsewhere: **[Pip-Boy](https://github.com/project-barry/PyPipboyApp/tree/master/barry)**,
+Fallout 4's Pip-Boy, lives in its own GPL repository. It's the example for apps with a
+[Python service](https://github.com/project-barry/barry-launcher-apps/wiki/Services).
+
 ## Try the example
 
 Download `dice.zip`, `whatsapp.zip` or `dino.zip` from the
@@ -43,6 +47,7 @@ The wiki explains it all, with pictures:
 - [App package reference](https://github.com/project-barry/barry-launcher-apps/wiki/App-Package-Reference)
 - [Web apps](https://github.com/project-barry/barry-launcher-apps/wiki/Web-Apps)
 - [The `barry` object](https://github.com/project-barry/barry-launcher-apps/wiki/The-barry-Object)
+- [Services (Python)](https://github.com/project-barry/barry-launcher-apps/wiki/Services)
 - [Design guidelines](https://github.com/project-barry/barry-launcher-apps/wiki/Design-Guidelines)
 - [Tools](https://github.com/project-barry/barry-launcher-apps/wiki/Tools)
 

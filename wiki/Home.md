@@ -19,6 +19,8 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
   [Dino](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/dino)
   if you removed the one that comes with Barry Launcher. Both are on the
   [releases page](https://github.com/project-barry/barry-launcher-apps/releases/latest).
+  [Pip-Boy](https://github.com/project-barry/PyPipboyApp/tree/master/barry), Fallout 4's
+  Pip-Boy, has [its own releases](https://github.com/project-barry/PyPipboyApp/releases).
 
 ## For app makers
 
@@ -31,6 +33,7 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
    the archive, and the limits.
 4. **[The `barry` object](The-barry-Object)**: what Barry Launcher gives your
    app: the screen's scale, a folder to save in, closing.
+   **[Services](Services)**: a Python helper for what QML can't do.
 5. **[Design guidelines](Design-Guidelines)**: sizes, colours and touch, so
    your app feels at home.
 6. **[Tools](Tools)**: editors, previewing, icons, and what we suggest.

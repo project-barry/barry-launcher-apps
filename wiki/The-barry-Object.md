@@ -33,6 +33,21 @@ no `barry`.)
 | | |
 | --- | --- |
 | `barry.close()` | Quit the app. The bottom screen goes back to what it showed before (the home screen, usually). |
+| `barry.request(method, path, body, done)` | Call your app's [service](Services). `body` (an object, or `null`) goes as JSON; `done(status, reply)` gets the HTTP status (`0`: no answer) and the reply's JSON (`null` if it isn't JSON). |
+
+## Your service
+
+These are only for apps with a [service](Services) (`"service"` in
+`barry-app.json`):
+
+| | | |
+| --- | --- | --- |
+| `barry.serviceUrl` | string | `"http://127.0.0.1:PORT/"`, or `""` without a service, or on a Barry Launcher too old for services |
+| `barry.serviceToken` | string | For an `Image` whose `source` is the service: add `?token=` and this. `barry.request` sends it by itself. |
+
+```qml
+Image { source: app.barry.serviceUrl + "map.png?token=" + app.barry.serviceToken }
+```
 
 You don't need a close button: users can go home by swiping up from the
 bottom edge or holding the AYN button, and close your app with the ✕ on its
@@ -116,4 +131,5 @@ running the portable Barry Launcher may have fewer: say in your README what
 your app needs.
 
 **Not supported:** native (C++) QML plugins, other programs, and other
-languages. An app is QML and JavaScript, plus its images, sounds and fonts.
+languages. An app is QML and JavaScript, plus its images, sounds and fonts,
+and, when it really needs one, a [Python service](Services).

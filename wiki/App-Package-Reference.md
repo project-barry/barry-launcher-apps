@@ -40,6 +40,7 @@ by relative paths (`"images/logo.png"`, `import "parts"`).
 | `url` | **required** for web | The site to open, `https://` only. |
 | `zoom` | optional, web | How big the site is drawn, 0.5 to 4 (default 1.25). |
 | `allow` | optional, web | `["microphone"]`, `["camera"]` or both: what the site may use without asking. |
+| `service` | optional, QML | A `.py` file inside the folder: a Python helper that runs while the app is open ([Services](Services)). |
 | `icon` | optional | A `.svg` or `.png` inside the folder, square. Without one, the tile shows a plain app icon (*My First App* below). |
 | `description`, `author`, `homepage` | optional | Text about the app. Barry Launcher keeps them for a future app list or store. |
 
@@ -74,7 +75,7 @@ why.
 | Files | 5,000 |
 | Links | none: no symbolic links, hard links or device files |
 | Paths | all inside the app folder: no `..`, no absolute paths |
-| `main`, `icon` | must exist in the folder |
+| `main`, `icon`, `service` | must exist in the folder (`service`: a `.py` file, QML apps only) |
 | `url` | `https://` only |
 | `id` | not one of Barry Launcher's own apps |
 
@@ -95,8 +96,11 @@ A web app runs in Firefox, kiosk mode, with a profile of its own in its
 data folder ([Web apps](Web-Apps)). A QML app runs like this:
 
 ```
-qml6 /usr/share/barry_launcher/shell/AppHost.qml -- APPDIR MAIN ID NAME DATADIR
+qml6 /usr/share/barry_launcher/shell/AppHost.qml -- APPDIR MAIN ID NAME DATADIR fullscreen [SERVICEURL TOKEN]
 ```
+
+An app with a [service](Services) gets its service started first, and its
+address and token at the end.
 
 `AppHost.qml` opens a full-screen window titled `Barry App ID` and loads
 your `main` into it ([source](https://github.com/project-barry/barry-launcher-apps/blob/main/tools/AppHost.qml)).

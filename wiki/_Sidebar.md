@@ -9,6 +9,7 @@
 - [Web apps (WhatsApp)](Web-Apps)
 - [App package reference](App-Package-Reference)
 - [The `barry` object](The-barry-Object)
+- [Services (Python)](Services)
 - [Design guidelines](Design-Guidelines)
 - [Tools](Tools)
 - [Testing and debugging](Testing-and-Debugging)
