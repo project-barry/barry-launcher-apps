@@ -1,0 +1,11 @@
+{
+  "format": 1,
+  "id": "io.github.project-barry.dice",
+  "name": "Dice",
+  "version": "1.0.0",
+  "main": "main.qml",
+  "icon": "icon.svg",
+  "description": "Roll up to six dice (d4 to d20) with a tap. Remembers your dice and your last rolls.",
+  "author": "Project Barry",
+  "homepage": "https://github.com/project-barry/barry-launcher-apps"
+}

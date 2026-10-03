@@ -1,0 +1,10 @@
+{
+  "format": 1,
+  "id": "io.github.your-name.hello",
+  "name": "Hello",
+  "version": "0.1.0",
+  "main": "main.qml",
+  "icon": "icon.svg",
+  "description": "My first Barry Launcher app.",
+  "author": "Your Name"
+}

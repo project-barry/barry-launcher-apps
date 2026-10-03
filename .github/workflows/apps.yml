@@ -1,0 +1,32 @@
+# Checks every app on each push, and packs them: the zips are this run's
+# artifacts, and on a tag (v1.2.3) they go on the release.
+name: Apps
+on:
+  push:
+  pull_request:
+jobs:
+  apps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check and pack
+        run: |
+          mkdir -p dist
+          for app in apps/*/ template/; do
+            python3 tools/barry-app check "$app"
+            python3 tools/barry-app pack "$app" -o "dist/$(basename "$app").zip"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apps
+          path: dist/*.zip
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip --title "$GITHUB_REF_NAME" --notes "Barry Launcher apps, ready to install." || gh release upload "$GITHUB_REF_NAME" dist/*.zip --clobber

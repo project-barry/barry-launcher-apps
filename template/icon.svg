@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="#cfe0ff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- A waving hand would be nice; a smiley will do. Replace with your own. -->
+  <circle cx="12" cy="12" r="9"/>
+  <path d="M8.5 14.5c1.8 2 5.2 2 7 0"/>
+  <circle cx="9" cy="10" r="0.9" fill="#cfe0ff" stroke="none"/>
+  <circle cx="15" cy="10" r="0.9" fill="#cfe0ff" stroke="none"/>
+</svg>
