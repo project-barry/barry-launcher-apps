@@ -97,5 +97,11 @@ your `main` into it ([source](https://github.com/project-barry/barry-launcher-ap
 The environment also has `BARRY_APP_ID`, `BARRY_APP_DIR` and
 `BARRY_APP_DATA`, for anything outside QML that needs them.
 
+`XDG_CONFIG_HOME` and `XDG_DATA_HOME` point inside the app's data folder
+(`.config` and `.local/share` there), so whatever Qt or a library saves for
+the app by default lands with the app's own data and is removed with it.
+Qt's compiled-QML disk cache is off for apps (`QML_DISABLE_DISK_CACHE=1`);
+the shared font and GPU caches stay where they are.
+
 One app, one window. Tapping its tile again brings it forward instead of
 starting a second copy.

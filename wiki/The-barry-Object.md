@@ -72,8 +72,9 @@ function addNote(text) {
 ```
 
 Keep it to a few hundred kilobytes. For more, `QtQuick.LocalStorage` (a
-SQLite database) is available, though it keeps its database in Qt's own
-folder rather than yours.
+SQLite database) works too: Barry Launcher points Qt's data folder into
+your app's data folder, so the database is yours and goes when the app is
+removed.
 
 ## Screen and input
 

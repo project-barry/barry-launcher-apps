@@ -2,8 +2,8 @@
 
 Barry Launcher is the home screen on the AYN Thor's bottom screen in
 [PB-OS](https://github.com/project-barry/pb-os). Besides its own apps
-(Firefox, Discord, Signal, Trackpad, Keyboard, Dino), it runs apps that
-anyone can make and share: a folder with a QML file and a small
+(Firefox, Discord, Signal, Trackpad, Keyboard), it runs apps that anyone
+can make and share (Dino, which comes with it, is one): a folder with a QML file and a small
 `barry-app.json`, zipped.
 
 ![Barry Launcher on an AYN Thor's bottom screen, with the Dice app installed](https://raw.githubusercontent.com/project-barry/barry-launcher-apps/main/wiki/images/thor-home.png)
@@ -14,6 +14,9 @@ anyone can make and share: a folder with a QML file and a small
 
 - **[Installing apps](Installing-Apps)**: get an app's zip onto the Thor,
   install it, update it, remove it.
+- **Apps to try:** [Dice](Example-Dice), and [Dino](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/dino)
+  if you removed the one that comes with Barry Launcher. Both are on the
+  [releases page](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 
 ## For app makers
 

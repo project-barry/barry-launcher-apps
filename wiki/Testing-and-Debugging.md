@@ -72,11 +72,13 @@ die.roll(v[i])
 `width: 200` is right on the Thor and wrong anywhere else. Write
 `width: 200 * app.s`.
 
-### Saving to the wrong place
+### Settings without a location
 
-A `Settings` without `location` saves into a file shared by every QML app
-on the device. Always set
-`location: app.barry.dataDirUrl + "settings.ini"`.
+On the device and with `barry-app run`, a `Settings` without `location`
+still lands in your app's data folder (in `.config`), but run another way
+(Qt Creator, the plain `qml` tool) it goes into Qt's shared settings. Set
+`location: app.barry.dataDirUrl + "settings.ini"` and you always know
+where it is.
 
 ### Case in file names
 

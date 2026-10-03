@@ -54,11 +54,17 @@ If the old version was open, it closes; open it again from its tile.
 ## Removing an app
 
 - **Quick Access → Barry Launcher → Apps:** the **✕** next to the app, then
-  **Remove**. Only apps you installed have a ✕.
+  **Remove**. Apps you installed have a ✕, and so does Dino.
 - **Terminal:** `barry-app remove io.github.project-barry.dice` (the app's id;
   `barry-app list` shows it). Add `--keep-data` to keep what it saved.
 
-Removing an app also deletes what it saved.
+Removing an app leaves nothing behind: an open app is closed first, then
+its files, everything it saved, its log and its place on the home screen
+are deleted.
+
+**Dino** comes with Barry Launcher, but it's an app like the others: remove
+it and it stays gone, even after updates. To get it back, install `dino.zip`
+from the [releases](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 
 ## Hiding and ordering
 

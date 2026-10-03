@@ -15,13 +15,14 @@ Decky plugin, and the app gets its own tile on the home screen.
 | Folder | |
 | --- | --- |
 | [`apps/dice`](apps/dice) | **Dice**, the example app: up to six dice, d4 to d20, with a tumble-and-bounce roll. Shows sizing, touch, animation and saving settings. |
+| [`apps/dino`](apps/dino) | **Dino**, the endless runner that comes with Barry Launcher, here to install again if you removed it. A whole game in one QML file. |
 | [`template`](template) | A bare starting point: copy it, rename it, build on it. |
 | [`tools`](tools) | `barry-app check`, `pack` and `run`: check an app, zip it, and try it on your computer. |
 | [`wiki`](wiki) | The source of [the wiki](https://github.com/project-barry/barry-launcher-apps/wiki). |
 
 ## Try the example
 
-Download `dice.zip` from the
+Download `dice.zip` (or `dino.zip`) from the
 [latest release](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 On the Thor, go to Quick Access (•••) → **Barry Launcher** → **Apps** →
 **Install app…** and pick the zip.
@@ -52,5 +53,6 @@ sandbox: install apps only from people you trust.
 ## License
 
 MIT (see [LICENSE](LICENSE)): copy the example and the template into your
-own apps freely. The files in `tools/` come from pb-os and keep its license
+own apps freely. Dino comes from pb-os and keeps its license (GPL-2.0; see
+[its README](apps/dino/README.md), with the credits for the original game). The files in `tools/` come from pb-os and keep its license
 for its own scripts, the GNU GPL version 2 (see [tools/README.md](tools/README.md)).

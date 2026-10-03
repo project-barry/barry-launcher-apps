@@ -93,6 +93,6 @@ short WAV files for `SoundEffect`, music as OGG or MP3 for `MediaPlayer`.
   Qt's documentation
 - [The QML Book](https://www.qt.io/product/qt6/qml-book), free and
   thorough
-- The [Dice example](Example-Dice) and Barry Launcher's own QML (the
-  [Dino game](https://github.com/project-barry/pb-os/blob/main/sm8550-overlay/usr/share/barry_launcher/shell/Dino.qml)
-  is a whole game in one file)
+- The [Dice example](Example-Dice), and
+  [Dino](https://github.com/project-barry/barry-launcher-apps/blob/main/apps/dino/main.qml):
+  a whole game in one file
