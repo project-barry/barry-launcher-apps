@@ -1,5 +1,12 @@
 # Barry Launcher apps
 
+> [!IMPORTANT]
+> **This repo was built with a coding agent: [Claude Code](https://www.anthropic.com/claude-code),
+> running Anthropic's Claude Opus 5.5 (`claude-opus-5-5`).** Claude wrote the
+> code, the commit messages and this README. People set the goals, made the
+> decisions and did the hands-on testing. Review the code before you rely on
+> it. See [a note from lavachemist](https://github.com/project-barry), a human, on Project Barry and generative AI.
+
 Make your own apps for **Barry Launcher**, the home screen on the AYN Thor's
 bottom screen in [PB-OS](https://github.com/project-barry/pb-os) (and in the
 [portable Barry Launcher](https://github.com/project-barry/barry-launcher)).
