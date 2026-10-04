@@ -28,16 +28,16 @@ jobs:
       - name: Apps to try
         shell: pwsh
         run: |
-          New-Item -ItemType Directory apps | Out-Null
-          git clone -q --depth 1 https://github.com/project-barry/stardew-dual-screen.git apps/stardew-dual-screen
-          git clone -q --depth 1 https://github.com/project-barry/PyPipboyApp.git apps/PyPipboyApp
+          New-Item -ItemType Directory try-apps | Out-Null
+          git clone -q --depth 1 https://github.com/project-barry/stardew-dual-screen.git try-apps/stardew-dual-screen
+          git clone -q --depth 1 https://github.com/project-barry/PyPipboyApp.git try-apps/PyPipboyApp
       - name: Try Stardew Dual Screen and Pip-Boy (offscreen)
         shell: pwsh
         run: |
           $sim = "dist\Barry Simulator"
-          & "$sim\python\python.exe" "$sim\sim\selftest.py" "$sim\sim" apps shots "Stardew Dual Screen" "app connected"
+          & "$sim\python\python.exe" "$sim\sim\selftest.py" "$sim\sim" try-apps shots "Stardew Dual Screen" "app connected"
           if ($LASTEXITCODE) { throw "Stardew Dual Screen failed" }
-          & "$sim\python\python.exe" "$sim\sim\selftest.py" "$sim\sim" apps shots "Pip-Boy" "connected to 127.0.0.1"
+          & "$sim\python\python.exe" "$sim\sim\selftest.py" "$sim\sim" try-apps shots "Pip-Boy" "connected to 127.0.0.1"
           if ($LASTEXITCODE) { throw "Pip-Boy failed" }
       - name: Barry Simulator.exe starts it
         shell: pwsh
