@@ -23,6 +23,7 @@ Decky plugin, and the app gets its own tile on the home screen.
 | --- | --- |
 | [`apps/dice`](apps/dice) | **Dice**, the example app: up to six dice, d4 to d20, with a tumble-and-bounce roll. Shows sizing, touch, animation and saving settings. |
 | [`apps/whatsapp`](apps/whatsapp) | **WhatsApp**, a web app: WhatsApp Web in a Firefox window of its own, logged in between runs. No code, just `barry-app.json`; the example for [web apps](https://github.com/project-barry/barry-launcher-apps/wiki/Web-Apps). Not made by WhatsApp or Meta. |
+| [`apps/claude`](apps/claude) | **Claude**, a web app: claude.ai in a Firefox window of its own, with your own account, chats and voice input. Not made by Anthropic. |
 | [`apps/dino`](apps/dino) | **Dino**, the endless runner that comes with Barry Launcher, here to install again if you removed it. A whole game in one QML file. |
 | [`template`](template) | A bare starting point: copy it, rename it, build on it. |
 | [`tools`](tools) | `barry-app check`, `pack` and `run`: check an app, zip it, and try it on your computer. |
@@ -34,7 +35,7 @@ Fallout 4's Pip-Boy, lives in its own GPL repository. It's the example for apps 
 
 ## Try the example
 
-Download `dice.zip`, `whatsapp.zip` or `dino.zip` from the
+Download `dice.zip`, `whatsapp.zip`, `claude.zip` or `dino.zip` from the
 [latest release](https://github.com/project-barry/barry-launcher-apps/releases/latest).
 On the Thor, go to Quick Access (•••) → **Barry Launcher** → **Apps** →
 **Install app…** and pick the zip.

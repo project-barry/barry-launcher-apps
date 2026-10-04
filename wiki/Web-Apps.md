@@ -107,3 +107,14 @@ map site, your home server's dashboard.
    and scan the code.
 
 It stays linked until you unlink it on your phone or remove the app.
+
+## The Claude app
+
+[`apps/claude`](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/claude)
+opens [claude.ai](https://claude.ai) the same way, with your own Claude
+account and plan. It differs from WhatsApp in two lines: `"url":
+"https://claude.ai/"` and `"zoom": 1.5`, since claude.ai is one column of
+chat and reads better bigger (827 CSS pixels across). It keeps
+`"allow": ["microphone"]` for voice input. Log in with "Continue with
+email" (the code can be typed with the Barry keyboard) or Google. Not made
+by Anthropic.

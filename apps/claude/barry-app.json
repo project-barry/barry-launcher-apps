@@ -1,0 +1,14 @@
+{
+  "format": 1,
+  "id": "io.github.project-barry.claude",
+  "name": "Claude",
+  "version": "1.0.0",
+  "type": "web",
+  "url": "https://claude.ai/",
+  "zoom": 1.5,
+  "allow": ["microphone"],
+  "icon": "icon.svg",
+  "description": "claude.ai on the bottom screen, in a Firefox window of its own. Not made by Anthropic.",
+  "author": "Project Barry",
+  "homepage": "https://github.com/project-barry/barry-launcher-apps"
+}

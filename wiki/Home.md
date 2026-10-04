@@ -15,9 +15,9 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
 - **[Installing apps](Installing-Apps)**: get an app's zip onto the Thor,
   install it, update it, remove it, and
   [open it with a game](Installing-Apps#opening-an-app-with-a-game).
-- **Apps to try:** [Dice](Example-Dice), [WhatsApp](Web-Apps), and
+- **Apps to try:** [Dice](Example-Dice), [WhatsApp](Web-Apps), [Claude](Web-Apps#the-claude-app), and
   [Dino](https://github.com/project-barry/barry-launcher-apps/tree/main/apps/dino)
-  if you removed the one that comes with Barry Launcher. Both are on the
+  if you removed the one that comes with Barry Launcher. All are on the
   [releases page](https://github.com/project-barry/barry-launcher-apps/releases/latest).
   [Pip-Boy](https://github.com/project-barry/PyPipboyApp/tree/master/barry), Fallout 4's
   Pip-Boy, has [its own releases](https://github.com/project-barry/PyPipboyApp/releases).
