@@ -332,6 +332,8 @@ class Sim(QObject):
                      "XDG_DATA_HOME": os.path.join(data, ".local", "share"),
                      "XDG_CACHE_HOME": os.path.join(SUPPORT, "cache"),
                      "QML_DISABLE_DISK_CACHE": "1", "QT_FORCE_STDERR_LOGGING": "1",
+                     # Qt's font fallback notes aren't the app's business.
+                     "QT_LOGGING_RULES": "qt.qpa.fonts.warning=false",
                      "PYTHONUNBUFFERED": "1"}.items():
             env.insert(k, v)
         p = QProcess(self)

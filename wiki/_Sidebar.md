@@ -12,5 +12,6 @@
 - [Services (Python)](Services)
 - [Design guidelines](Design-Guidelines)
 - [Tools](Tools)
+- [Barry Simulator (Mac)](Barry-Simulator)
 - [Testing and debugging](Testing-and-Debugging)
 - [Sharing your app](Sharing-Your-App)

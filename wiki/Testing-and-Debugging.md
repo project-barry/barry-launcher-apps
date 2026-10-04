@@ -11,6 +11,10 @@ python3 tools/barry-app run myapp           # try it, hosted as on the Thor
 `barry-app run` prints your app's errors and `console.log()` output in the
 terminal.
 
+On a Mac, [Barry Simulator](Barry-Simulator) does the same without a terminal: it
+finds your apps, opens them with a double-click, shows their log, and reopens
+them when you save a file.
+
 ## When it won't start
 
 If `main.qml` has an error, Barry Launcher shows this instead of a black
