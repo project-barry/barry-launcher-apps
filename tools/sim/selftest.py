@@ -22,6 +22,8 @@ os.makedirs(home, exist_ok=True)
 with open(os.path.join(home, "settings.json"), "w", encoding="utf-8") as fh:
     json.dump({"roots": [apps], "folders": [], "scale": 0.75, "autoReload": False}, fh)
 tag = name.lower().replace(" ", "-")
+if sys.platform == "win32":  # offscreen Qt doesn't look for Windows' own fonts
+    os.environ.setdefault("QT_QPA_FONTDIR", os.path.join(os.environ.get("WINDIR", r"C:\Windows"), "Fonts"))
 os.environ.update(BARRY_SIM_HOME=home, QT_QPA_PLATFORM="offscreen",
                   BARRY_SIM_SHOT=os.path.join(out, tag + "-app.png"), BARRY_SIM_SHOT_MS="8000")
 sys.argv = [sys.argv[0]]

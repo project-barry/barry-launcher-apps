@@ -392,7 +392,7 @@ ApplicationWindow {
                             Rectangle { width: 10; height: 10; radius: 5; color: helperRow.on ? win.good : win.line }
                             Text {
                                 Layout.fillWidth: true
-                                text: helperRow.modelData.split("/").pop()
+                                text: helperRow.modelData.split(/[\\/]/).pop()
                                 color: win.text
                                 font { family: win.family; pixelSize: 14 }
                             }

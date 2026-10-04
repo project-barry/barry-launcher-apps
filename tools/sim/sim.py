@@ -494,6 +494,8 @@ class Sim(QObject):
         procs = list(self._procs.values()) + list(self._helpers.values())
         self._restart.clear()
         self._clear.clear()
+        for p in procs:
+            p.blockSignals(True)  # quitting: no more log lines or restarts
         for p in self._procs.values():
             p.terminate()
         for p in self._helpers.values():
