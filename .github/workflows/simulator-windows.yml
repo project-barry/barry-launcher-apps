@@ -1,0 +1,71 @@
+# Barry Simulator for Windows: built (tools/sim/windows/build-windows.ps1),
+# tried offscreen with the Stardew Dual Screen and Pip-Boy apps and their
+# stand-in games, zipped, and released on simulator-v* tags.
+name: Barry Simulator (Windows)
+
+on:
+  push:
+    branches: [main, "sim-*"]
+    tags: ["simulator-v*"]
+    paths: ["tools/sim/**", "tools/barry_apps.py", "tools/AppHost.qml", ".github/workflows/simulator-windows.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Build
+        shell: pwsh
+        run: tools/sim/windows/build-windows.ps1 -Out dist
+      - name: Apps to try
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory apps | Out-Null
+          git clone -q --depth 1 https://github.com/project-barry/stardew-dual-screen.git apps/stardew-dual-screen
+          git clone -q --depth 1 https://github.com/project-barry/PyPipboyApp.git apps/PyPipboyApp
+      - name: Try Stardew Dual Screen and Pip-Boy (offscreen)
+        shell: pwsh
+        run: |
+          $sim = "dist\Barry Simulator"
+          & "$sim\python\python.exe" "$sim\sim\selftest.py" "$sim\sim" apps shots "Stardew Dual Screen" "app connected"
+          if ($LASTEXITCODE) { throw "Stardew Dual Screen failed" }
+          & "$sim\python\python.exe" "$sim\sim\selftest.py" "$sim\sim" apps shots "Pip-Boy" "connected to 127.0.0.1"
+          if ($LASTEXITCODE) { throw "Pip-Boy failed" }
+      - name: Barry Simulator.exe starts it
+        shell: pwsh
+        run: |
+          $env:QT_QPA_PLATFORM = "offscreen"
+          Start-Process "dist\Barry Simulator\Barry Simulator.exe"
+          Start-Sleep 15
+          $running = Get-CimInstance Win32_Process -Filter "Name = 'pythonw.exe'" | Where-Object { $_.CommandLine -like "*sim.py*" }
+          Get-Content "$env:LOCALAPPDATA\Barry Simulator\Barry Simulator.log" -ErrorAction SilentlyContinue
+          if (-not $running) { throw "the simulator is not running" }
+          $running | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+      - name: Zip
+        shell: pwsh
+        run: 7z a -tzip -mx=7 Barry-Simulator-Windows.zip "./dist/Barry Simulator" | Select-Object -Last 2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots
+          path: shots/*.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Barry-Simulator-Windows
+          path: Barry-Simulator-Windows.zip
+          compression-level: 0
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/simulator-v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          gh release create $env:GITHUB_REF_NAME Barry-Simulator-Windows.zip --title "Barry Simulator $($env:GITHUB_REF_NAME -replace 'simulator-', '') for Windows" --notes "Try Barry Launcher apps on Windows, each in a window shaped like the AYN Thor's bottom screen. Unzip Barry-Simulator-Windows.zip anywhere and double-click **Barry Simulator.exe**; nothing needs installing. How to use it: [Barry Simulator](https://github.com/project-barry/barry-launcher-apps/wiki/Barry-Simulator). For the Mac, build it with tools/sim/build-mac-app.sh."

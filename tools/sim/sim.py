@@ -11,8 +11,9 @@ it. Logs, restarting, and restarting when a file changes are in the
 simulator's window (Sim.qml).
 
 Everything the simulator keeps is in ~/Library/Application Support/Barry
-Simulator (on Linux, ~/.local/share/barry-simulator): its settings, the
-installed apps and every app's data.
+Simulator (on Windows, %APPDATA%\\Barry Simulator; on Linux,
+~/.local/share/barry-simulator): its settings, the installed apps and every
+app's data.
 
   python3 sim.py        (needs PySide6 6.8; build-mac-app.sh makes the .app)
 """
@@ -25,8 +26,11 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = next(d for d in (HERE, os.path.dirname(HERE)) if os.path.isfile(os.path.join(d, "barry_apps.py")))
-SUPPORT = (os.path.expanduser("~/Library/Application Support/Barry Simulator") if sys.platform == "darwin"
-           else os.path.expanduser("~/.local/share/barry-simulator"))
+WINDOWS = sys.platform == "win32"
+SUPPORT = os.environ.get("BARRY_SIM_HOME") or (  # BARRY_SIM_HOME: for tests (selftest.py)
+          os.path.expanduser("~/Library/Application Support/Barry Simulator") if sys.platform == "darwin"
+          else os.path.join(os.environ.get("APPDATA") or os.path.expanduser("~"), "Barry Simulator") if WINDOWS
+          else os.path.expanduser("~/.local/share/barry-simulator"))
 # Installs and app data go to the simulator's folder, not a real Barry
 # Launcher's: barry_apps reads these when it is imported.
 os.environ["XDG_DATA_HOME"] = os.path.join(SUPPORT, "data")
@@ -35,8 +39,8 @@ os.environ["XDG_CACHE_HOME"] = os.path.join(SUPPORT, "cache")
 sys.path.insert(0, TOOLS)
 import barry_apps  # noqa: E402
 
-from PySide6.QtCore import (Property, QObject, QProcess, QProcessEnvironment, QTimer, QUrl,  # noqa: E402
-                            Signal, Slot)
+from PySide6.QtCore import (Property, QObject, QProcess, QProcessEnvironment, QStandardPaths, QTimer,  # noqa: E402
+                            QUrl, Signal, Slot)
 from PySide6.QtGui import QDesktopServices, QFontDatabase, QGuiApplication, QIcon  # noqa: E402
 from PySide6.QtQml import QQmlApplicationEngine  # noqa: E402
 
@@ -78,8 +82,20 @@ def stamp(folder: str) -> float:
 
 def firefox() -> str | None:
     return (os.environ.get("BARRY_FIREFOX") or shutil.which("firefox")
-            or next((f for f in ("/Applications/Firefox.app/Contents/MacOS/firefox",)
+            or next((f for f in ("/Applications/Firefox.app/Contents/MacOS/firefox",
+                                 r"C:\Program Files\Mozilla Firefox\firefox.exe",
+                                 r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe")
                      if os.path.isfile(f)), None))
+
+
+def python() -> str:
+    """The Python for app windows, services and stand-ins: on Windows,
+    pythonw.exe, which opens no console window."""
+    if WINDOWS:
+        w = os.path.join(os.path.dirname(sys.executable), "pythonw.exe")
+        if os.path.isfile(w):
+            return w
+    return sys.executable
 
 
 class Sim(QObject):
@@ -92,7 +108,8 @@ class Sim(QObject):
     def __init__(self):
         super().__init__()
         s = barry_apps._read_json(SETTINGS, {})
-        github = os.path.expanduser("~/Documents/Github")
+        docs = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.DocumentsLocation)
+        github = os.path.join(docs or os.path.expanduser("~/Documents"), "Github")
         self._roots = s.get("roots") or ([github] if os.path.isdir(github) else [])
         self._folders = s.get("folders", [])
         self._scale = float(s.get("scale", 0.75))
@@ -360,7 +377,7 @@ class Sim(QObject):
             p.setArguments(["--no-remote", "--profile", profile, "--width", str(round(1240 * self._scale)),
                             "--height", str(round(1080 * self._scale)), m["web"]["url"]])
         else:
-            p.setProgram(sys.executable)
+            p.setProgram(python())
             p.setArguments(["-u", os.path.join(HERE, "apphost.py"), e["dir"], data, str(self._scale)])
         self._procs[key] = p
         self._stamps[key] = stamp(e["dir"])
@@ -416,7 +433,7 @@ class Sim(QObject):
         p = self._helpers.get(script)
         name = os.path.basename(script)
         if p:
-            p.terminate()
+            p.kill() if WINDOWS else p.terminate()
             return
         p = QProcess(self)
         p.setWorkingDirectory(os.path.dirname(os.path.dirname(script)))
@@ -436,7 +453,7 @@ class Sim(QObject):
             self._refresh_running()
         p.readyReadStandardOutput.connect(out)
         p.finished.connect(ended)
-        p.start(sys.executable, ["-u", script])
+        p.start(python(), ["-u", script])
         self._helpers[script] = p
         self._append(key, f"[simulator] stand-in {name} started\n")
         self._refresh_running()
@@ -477,8 +494,10 @@ class Sim(QObject):
         procs = list(self._procs.values()) + list(self._helpers.values())
         self._restart.clear()
         self._clear.clear()
-        for p in procs:
+        for p in self._procs.values():
             p.terminate()
+        for p in self._helpers.values():
+            p.kill() if WINDOWS else p.terminate()
         for p in procs:
             if not p.waitForFinished(4000):
                 p.kill()
