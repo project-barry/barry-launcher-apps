@@ -428,7 +428,7 @@ ApplicationWindow {
                             wrapMode: TextEdit.WrapAnywhere
                             text: sim.log
                             color: "#cfd3dc"
-                            font { family: Qt.platform.os === "windows" ? "Consolas" : "Menlo"; pixelSize: 12 }
+                            font { family: Qt.platform.os === "windows" ? "Consolas" : Qt.platform.os === "osx" ? "Menlo" : "monospace"; pixelSize: 12 }
                             background: null
                             placeholderText: "Nothing yet. Open the app to see what it prints, and any QML errors."
                             placeholderTextColor: win.soft

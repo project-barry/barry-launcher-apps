@@ -37,8 +37,8 @@ can make and share (Dino, which comes with it, is one): a folder with a QML file
 5. **[Design guidelines](Design-Guidelines)**: sizes, colours and touch, so
    your app feels at home.
 6. **[Tools](Tools)**: editors, previewing, icons, and what we suggest.
-7. **[Barry Simulator](Barry-Simulator)**: try apps on a Mac or a
-   Windows PC with a double-click, with their services and stand-in games.
+7. **[Barry Simulator](Barry-Simulator)**: try apps on a Mac, a
+   Windows PC or Linux with a double-click, with their services and stand-in games.
    **[Testing and debugging](Testing-and-Debugging)**: logs and common
    mistakes.
 8. **[Sharing your app](Sharing-Your-App)**: versions, zips and GitHub

@@ -36,7 +36,7 @@ screens visually and writes QML. Good for a first look. Its projects
 include extra modules, so copy the parts you want into a plain `main.qml`
 rather than shipping the project.
 
-## Barry Simulator (Mac, Windows)
+## Barry Simulator (Mac, Windows, Linux)
 
 [Barry Simulator](Barry-Simulator) opens your apps in windows shaped like the
 Thor's bottom screen, with Qt 6.8 (the version on PB-OS), their services and

@@ -1,6 +1,6 @@
-# Barry Simulator (Mac and Windows)
+# Barry Simulator (Mac, Windows, Linux)
 
-**Barry Simulator** runs Barry Launcher apps on a Mac or a Windows PC, each in a window shaped
+**Barry Simulator** runs Barry Launcher apps on a Mac, a Windows PC or Linux, each in a window shaped
 like the AYN Thor's bottom screen. You don't need a Thor or a terminal: double-click the
 simulator, then double-click an app. It's the quickest way to see an app while you're making it.
 
@@ -21,7 +21,7 @@ It runs apps the way Barry Launcher does:
 ### Windows
 
 1. Download **Barry-Simulator-Windows.zip** from the
-   [Barry Simulator release](https://github.com/project-barry/barry-launcher-apps/releases/tag/simulator-v1.0.0)
+   [Barry Simulator release](https://github.com/project-barry/barry-launcher-apps/releases/tag/simulator-v1.1.0)
    (a newer one may be on the [releases page](https://github.com/project-barry/barry-launcher-apps/releases)).
 2. Right-click it, choose **Extract All…**, and extract it wherever you like, for example to
    your Documents folder.
@@ -38,6 +38,26 @@ from this repository's code (see the
 [build](https://github.com/project-barry/barry-launcher-apps/actions/workflows/simulator-windows.yml)).
 
 It's for 64-bit Windows 10 and 11. Windows on Arm runs it too, through Windows' own emulation.
+
+### Linux
+
+1. Download the AppImage for your computer from the
+   [Barry Simulator release](https://github.com/project-barry/barry-launcher-apps/releases/tag/simulator-v1.1.0):
+   **Barry-Simulator-x86_64.AppImage** for most PCs, or **Barry-Simulator-aarch64.AppImage**
+   for ARM computers.
+2. Let it run as a program: right-click it, choose **Properties**, and turn on **Allow executing
+   file as program** (the wording differs between file managers). In a terminal, that's
+   `chmod +x Barry-Simulator-*.AppImage`.
+3. Double-click it.
+
+It's one file with everything in it (Python, Qt 6.8 and Noto Sans), and it works on X11 and
+Wayland desktops. The x86_64 one runs on distributions from 2019 on (glibc 2.28: Ubuntu 20.04,
+Debian 11, Fedora 29 and later). The aarch64 one needs glibc 2.39 (Ubuntu 24.04, Fedora 40, or
+later).
+
+If it doesn't start, your system may be missing FUSE, which AppImages use to open. Install your
+distribution's `fuse3` package, or run it as `./Barry-Simulator-x86_64.AppImage
+--appimage-extract-and-run`.
 
 ### Mac
 
@@ -63,7 +83,6 @@ needs Python 3.13 because the Qt 6.8 that PB-OS uses has no build for newer Pyth
 Homebrew's Python where Homebrew keeps it, so it works on the Mac that built it; build it again
 on each Mac. To update the simulator later, `git pull`, then run `build-mac-app.sh` again.
 
-On Linux, run `pip install PySide6==6.8.3`, then `python3 tools/sim/sim.py`.
 
 ## Finding your apps
 
@@ -92,7 +111,7 @@ see the reason.
 - **Close** the app with its own close button, its window's red button, or **Close** in the
   simulator. Any of these stops its service too.
 - A green dot on the tile means the app is open. If you can't see its window, it's behind the
-  simulator: click its icon in the Dock (Mac) or the taskbar (Windows).
+  simulator: click its icon in the Dock (Mac) or the taskbar (Windows, Linux).
 
 ### Window size
 
@@ -161,6 +180,7 @@ simulator itself won't start), here:
 | --- | --- | --- |
 | Mac | `~/Library/Application Support/Barry Simulator` | `~/Library/Logs/Barry Simulator.log` |
 | Windows | `%APPDATA%\Barry Simulator` | `%LOCALAPPDATA%\Barry Simulator\Barry Simulator.log` |
+| Linux | `~/.local/share/barry-simulator` | `~/.local/state/barry-simulator/barry-simulator.log` |
 
 (On Windows, paste the path into File Explorer's address bar.)
 
