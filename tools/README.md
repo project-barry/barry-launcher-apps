@@ -17,7 +17,7 @@ python3 tools/barry-app run apps/dice        # try it in a 1240 x 1080 window
 
 On Windows, use `py tools\barry-app ...`.
 
-On a Mac, [**Barry Simulator**](sim/README.md) runs apps with a double-click: it finds your
+On a Mac or a Windows PC, [**Barry Simulator**](sim/README.md) runs apps with a double-click: it finds your
 app folders, runs each one as Barry Launcher would (with its service, data folder and stand-in
 games), and shows its log.
 

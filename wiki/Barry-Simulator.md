@@ -1,8 +1,8 @@
-# Barry Simulator (Mac)
+# Barry Simulator (Mac and Windows)
 
-**Barry Simulator** runs Barry Launcher apps on a Mac, each in a window shaped like the AYN Thor's
-bottom screen. You don't need a Thor or a terminal: double-click it in Finder, then double-click
-an app. It's the quickest way to see an app while you're making it.
+**Barry Simulator** runs Barry Launcher apps on a Mac or a Windows PC, each in a window shaped
+like the AYN Thor's bottom screen. You don't need a Thor or a terminal: double-click the
+simulator, then double-click an app. It's the quickest way to see an app while you're making it.
 
 ![Barry Simulator: tiles for Dice, Dino, Hello, Pip-Boy, Stardew Dual Screen and WhatsApp on the left; on the right, Pip-Boy is selected, with Open, Restart, Show folder, Show data and Clear data buttons, a stand-in game called fake_fallout4.py, and an empty log](https://raw.githubusercontent.com/project-barry/barry-launcher-apps/main/wiki/images/simulator-home.png)
 
@@ -17,6 +17,29 @@ It runs apps the way Barry Launcher does:
   the same on the Thor.
 
 ## Getting it
+
+### Windows
+
+1. Download **Barry-Simulator-Windows.zip** from the
+   [Barry Simulator release](https://github.com/project-barry/barry-launcher-apps/releases/tag/simulator-v1.0.0)
+   (a newer one may be on the [releases page](https://github.com/project-barry/barry-launcher-apps/releases)).
+2. Right-click it, choose **Extract All…**, and extract it wherever you like, for example to
+   your Documents folder.
+3. In the extracted **Barry Simulator** folder, double-click **Barry Simulator.exe**.
+
+Nothing needs installing: Python, Qt 6.8 and Noto Sans are in the folder. Keep
+`Barry Simulator.exe` in that folder, next to its `python` and `site-packages` folders. To make
+it easy to find, right-click it and choose **Pin to Start**, or **Send to › Desktop (create
+shortcut)**.
+
+The first time, Windows may say **"Windows protected your PC"**, because the simulator isn't
+signed with a paid certificate. Click **More info**, then **Run anyway**. It's built on GitHub
+from this repository's code (see the
+[build](https://github.com/project-barry/barry-launcher-apps/actions/workflows/simulator-windows.yml)).
+
+It's for 64-bit Windows 10 and 11. Windows on Arm runs it too, through Windows' own emulation.
+
+### Mac
 
 The simulator is in this repository, in
 [`tools/sim`](https://github.com/project-barry/barry-launcher-apps/tree/main/tools/sim). You build
@@ -45,7 +68,7 @@ On Linux, run `pip install PySide6==6.8.3`, then `python3 tools/sim/sim.py`.
 ## Finding your apps
 
 When it opens, it looks for apps: any folder with a `barry-app.json`, up to three folders down
-in `~/Documents/Github`. Each tile shows the app's icon, its name, its version and the folder it
+in the `Github` folder in your Documents (where GitHub Desktop puts repositories). Each tile shows the app's icon, its name, its version and the folder it
 was found in.
 
 | Button | What it does |
@@ -69,7 +92,7 @@ see the reason.
 - **Close** the app with its own close button, its window's red button, or **Close** in the
   simulator. Any of these stops its service too.
 - A green dot on the tile means the app is open. If you can't see its window, it's behind the
-  simulator: click its icon in the Dock.
+  simulator: click its icon in the Dock (Mac) or the taskbar (Windows).
 
 ### Window size
 
@@ -131,9 +154,15 @@ Each app has its own data folder (`barry.dataDir`), kept between runs as on the 
 - **Clear data** (click it twice to confirm) empties it, so the app starts as it would on a new
   device. If the app is open, the simulator closes it first and opens it again afterwards.
 
-The simulator keeps its settings, installed apps and app data in
-`~/Library/Application Support/Barry Simulator`. If the simulator itself won't start, look in
-`~/Library/Logs/Barry Simulator.log`.
+The simulator keeps its settings, installed apps and app data, and its own log (for when the
+simulator itself won't start), here:
+
+| | Settings, apps and data | The simulator's log |
+| --- | --- | --- |
+| Mac | `~/Library/Application Support/Barry Simulator` | `~/Library/Logs/Barry Simulator.log` |
+| Windows | `%APPDATA%\Barry Simulator` | `%LOCALAPPDATA%\Barry Simulator\Barry Simulator.log` |
+
+(On Windows, paste the path into File Explorer's address bar.)
 
 ## Web apps
 
@@ -148,7 +177,7 @@ The simulator shows how an app looks and behaves. Before you share an app, still
 - An app is a window on your desktop. On the Thor, it fills the bottom screen, under a game on the
   top screen.
 - A mouse is one finger, plus a trackpad pinch. Try multi-touch on the device.
-- Your Mac is much faster than the Thor. Check animations and heavy pages on the device.
+- Your computer is much faster than the Thor. Check animations and heavy pages on the device.
 - Barry Launcher's home screen, [opening an app with a game](Installing-Apps#opening-an-app-with-a-game)
   and the Decky plugin aren't simulated.
 - The simulator runs services with Python 3.13. Check that a service also runs with the Python on

@@ -1,7 +1,9 @@
 # Barry Simulator
 
-Try Barry Launcher apps on a Mac, in windows shaped like the AYN Thor's bottom screen, with
-nothing to type: **Barry Simulator.app** opens with a double-click in Finder.
+Try Barry Launcher apps on a Mac or a Windows PC, in windows shaped like the AYN Thor's bottom
+screen, with nothing to type: **Barry Simulator.app** (Mac) or **Barry Simulator.exe** (Windows)
+opens with a double-click. How to use it, with screenshots:
+[the wiki](https://github.com/project-barry/barry-launcher-apps/wiki/Barry-Simulator).
 
 - **Your apps, found for you.** It looks in `~/Documents/Github` for app folders (anything
   with a `barry-app.json`, up to three folders down). **Add folder…** adds another folder to
@@ -25,7 +27,21 @@ pinch. The keyboard types into text fields (on the Thor, the Barry keyboard does
 
 Web apps (`"type": "web"`) open in Firefox, if it is installed.
 
-## Building the app
+## Windows
+
+Download **Barry-Simulator-Windows.zip** from the
+[releases](https://github.com/project-barry/barry-launcher-apps/releases) (tags `simulator-v…`).
+Extract it, then double-click **Barry Simulator.exe**. The folder has everything in it: Python
+3.13 (Python's embeddable build), Qt 6.8 and Noto Sans. Nothing needs installing.
+
+CI builds it on Windows with `windows/build-windows.ps1`
+([the workflow](../../.github/workflows/simulator-windows.yml)). The workflow also opens Stardew
+Dual Screen and the Pip-Boy, with their stand-ins, in the built simulator (`selftest.py`, offscreen)
+before zipping it. A `simulator-v*` tag releases it. `windows/launcher.c` is `Barry Simulator.exe`:
+it starts `python\pythonw.exe sim\sim.py` with no console window, and logs to
+`%LOCALAPPDATA%\Barry Simulator\Barry Simulator.log`.
+
+## Building the Mac app
 
 ```sh
 brew install python@3.13           # PySide6 6.8 has no build for newer Pythons
@@ -44,6 +60,7 @@ Without the .app (on Linux too): `pip install PySide6==6.8.3`, then `python3 too
 | --- | --- |
 | The simulator's settings, installed apps and app data | `~/Library/Application Support/Barry Simulator` |
 | Its own log (for when it won't start) | `~/Library/Logs/Barry Simulator.log` |
+| On Windows | `%APPDATA%\Barry Simulator`, and the log in `%LOCALAPPDATA%\Barry Simulator` |
 
 ## How it differs from the Thor
 
@@ -59,4 +76,6 @@ Without the .app (on Linux too): `pip install PySide6==6.8.3`, then `python3 too
 | `Sim.qml` | its window |
 | `apphost.py` | one app's window: `AppHost.qml` and the app's service, in PySide6 |
 | `build-mac-app.sh` | makes `Barry Simulator.app` |
+| `windows/` | the Windows build: `build-windows.ps1`, and `launcher.c`/`launcher.rc` for `Barry Simulator.exe` |
+| `selftest.py` | opens an app and its stand-in offscreen, and checks the log and the screenshots (CI) |
 | `icon.svg` | its icon |
