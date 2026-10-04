@@ -17,6 +17,10 @@ python3 tools/barry-app run apps/dice        # try it in a 1240 x 1080 window
 
 On Windows, use `py tools\barry-app ...`.
 
+On a Mac, [**Barry Simulator**](sim/README.md) runs apps with a double-click: it finds your
+app folders, runs each one as Barry Launcher would (with its service, data folder and stand-in
+games), and shows its log.
+
 These come unchanged from
 [pb-os](https://github.com/project-barry/pb-os) (`sm8550-overlay/usr/lib/barry_launcher/`
 and `sm8550-overlay/usr/share/barry_launcher/shell/AppHost.qml`). Change them
