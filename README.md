@@ -9,6 +9,8 @@
 
 > [!TIP]
 > **Join the Project Barry community on Discord:** https://discord.gg/euPurKCWc4
+>
+> **Watch Project Barry on YouTube:** https://www.youtube.com/@Project-Barry
 
 Make your own apps for **Barry Launcher**, the home screen on the AYN Thor's
 bottom screen in [PB-OS](https://github.com/project-barry/pb-os) (and in the
